@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect } from "react";
+const axios = require('axios').default;
 
 function App() {
+
+  const [status, setStatus] = useState(0);
+
+  const retrieveTweets = async () => {
+    const result = await axios({
+      method: 'get',
+      url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets',
+      withCredentials: true,
+    });
+    //console.log(result);
+   // console.log(result.status);
+    setStatus(result.status);
+    return result;
+  }
+  retrieveTweets();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>{status}</p>
     </div>
   );
 }
