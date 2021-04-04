@@ -1,10 +1,11 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
+import Tweet from './components/Tweet';
 const axios = require('axios').default;
 
 function App() {
 
-  const [status, setStatus] = useState(0);
+  const [tweetsData, setTweetsData] = useState([]);
 
   const retrieveTweets = async () => {
     const result = await axios({
@@ -13,15 +14,20 @@ function App() {
       withCredentials: true,
     });
     //console.log(result);
-   // console.log(result.status);
-    setStatus(result.status);
+    //console.log(result.data);
+    setTweetsData(result.data);
     return result;
   }
-  retrieveTweets();
+
+  useEffect(() => {
+    retrieveTweets();
+  }, []);
 
   return (
     <div className="App">
-      <p>{status}</p>
+      {tweetsData.map(x => {
+        return <Tweet tweetID = {x.id} key = {x.id}/>
+      })}
     </div>
   );
 }
