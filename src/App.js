@@ -19,13 +19,29 @@ function App() {
     return result;
   }
 
+  const postTweet = async () => {
+    const result = await axios({
+      method: 'post',
+      url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets',
+      withCredentials: true,
+      data: {
+        body: "testing"
+      },
+    });
+    return result;
+    // we are going to have a text field
+    // this function will have a parameter that is the text
+    // the body will have value of the parameter
+  }
+
   useEffect(() => {
     retrieveTweets();
+    //postTweet();
   }, []);
 
   return (
     <div className="App">
-      {tweetsData.map(x => {
+      {tweetsData.slice([0], [50]).map(x => {
         return <Tweet tweetID = {x.id} key = {x.id}/>
       })}
     </div>
