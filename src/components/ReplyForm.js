@@ -21,7 +21,6 @@ function ReplyForm(props) {
               "body": text
             },
         });
-        props.setReplyDiv([]);
         return result;
     }
 
@@ -32,7 +31,7 @@ function ReplyForm(props) {
         <div>
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
-                <button onClick={e => {e.preventDefault(); replyTweet();}}>Reply</button>
+                <button onClick={e => {e.preventDefault(); replyTweet(); props.setReplyDiv([]); props.setReplies(props.replies + 1);}}>Reply</button>
                 <button onClick={e => {e.preventDefault(); props.setReplyDiv([]);}}>Cancel</button>
             </div>
         </div>

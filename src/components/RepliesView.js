@@ -21,16 +21,12 @@ function RepliesView(props) {
             });
         }
         setIds(array);
-        props.setReplies(props.replies + 1);
         return result;
     }
 
     useEffect(() => {
         retrieveReplies();
     }, []);
-
-    // to do
-    // replies aint updating, need to fix and then commit
 
     return (
         <div className="repliesView">

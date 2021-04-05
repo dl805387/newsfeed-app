@@ -75,14 +75,21 @@ function Tweet(props) {
             <p>{text}</p>
             <p>{"likes: " + likes}</p>
             <p>{"retweets: " + retweets}</p>
+
             <button onClick={e => {e.preventDefault(); likeTweet()}} >{likeButton + " (" + likes + ")"}</button>
-            <button onClick={e => {e.preventDefault(); setReplyDiv(<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} />) }} >Reply</button>
+
+            <button onClick={e => {e.preventDefault(); setReplyDiv(<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} 
+                setReplies = {setReplies} replies = {replies} />) }} >Reply
+            </button>
+
             <button onClick={e => {e.preventDefault(); setRetweetDiv(<RetweetForm tweetID = {props.tweetID} 
                 setRetweetDiv = {setRetweetDiv} setRetweets = {setRetweets} retweets = {retweets} />) }} >Retweet {" (" + retweets + ")"}
             </button>
+
             <button onClick={e => {e.preventDefault(); setRepliesDiv(<RepliesView tweetID = {props.tweetID} 
-                setRepliesDiv = {setRepliesDiv} setReplies = {setReplies} replies = {replies} />) }} >See Replies {" (" + replies + ")"}
+                setRepliesDiv = {setRepliesDiv} />) }} >See Replies {" (" + replies + ")"}
             </button>
+            
             <div className="overlay">{replyDiv}</div>
             <div className="overlay">{retweetDiv}</div>
             <div className="overlay">{repliesDiv}</div>

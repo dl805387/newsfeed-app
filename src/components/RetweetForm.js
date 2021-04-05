@@ -17,8 +17,6 @@ function RetweetForm(props) {
                 "body": text
             },
         });
-        props.setRetweets(props.retweets + 1);
-        props.setRetweetDiv([]);
         return result;
     }
 
@@ -29,7 +27,7 @@ function RetweetForm(props) {
         <div>
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
-                <button onClick={e => {e.preventDefault(); retweet();}}>Retweet</button>
+                <button onClick={e => {e.preventDefault(); retweet(); props.setRetweets(props.retweets + 1); props.setRetweetDiv([]);}}>Retweet</button>
                 <button onClick={e => {e.preventDefault(); props.setRetweetDiv([]);}}>Cancel</button>
             </div>
         </div>
