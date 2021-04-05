@@ -6,7 +6,7 @@
     z-index: 1;
 }
 
-.reply {   
+.overlay {   
     z-index: 2;
     position: absolute;
     margin: auto;

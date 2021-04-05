@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReplyForm from "./ReplyForm";
+import RetweetForm from "./RetweetForm";
 const axios = require('axios').default;
 
 function Tweet(props) {
@@ -11,6 +12,7 @@ function Tweet(props) {
     const [likeButton, setLikeButton] = useState("");
 
     const [replyDiv, setReplyDiv] = useState([]);
+    const [retweetDiv, setRetweetDiv] = useState([]);
 
     // Get tweet using id and sets the states
     const retrieveTweet = async () => {
@@ -61,7 +63,7 @@ function Tweet(props) {
     // can you reply to your own tweet
     // find a way to display replies when button is clicked
 
-    // implement retweet
+    // maybe specify if a tweet is a retweet
 
     return (
         <div className="tweet">
@@ -71,7 +73,9 @@ function Tweet(props) {
             <p>{"retweets: " + retweets}</p>
             <button onClick={e => {e.preventDefault(); likeTweet()}} >{likeButton}</button>
             <button onClick={e => {e.preventDefault(); setReplyDiv(<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} />) }} >Reply</button>
-            <div className="reply">{replyDiv}</div>
+            <button onClick={e => {e.preventDefault(); setRetweetDiv(<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} />) }} >Retweet</button>
+            <div className="overlay">{replyDiv}</div>
+            <div className="overlay">{retweetDiv}</div>
         </div>
     );
 }
