@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
 import Tweet from './components/Tweet';
-import Form from './components/Form';
+import PostForm from './components/PostForm';
 const axios = require('axios').default;
 
 function App() {
@@ -29,11 +29,16 @@ function App() {
 
     return (
         <div className="App">
-            <Form />
+            <PostForm />
             <div>
                 {tweetsData.slice([0], [50]).map(x => {
                     return <Tweet tweetID = {x.id} key = {x.id}/>
                 })}
+            </div>
+
+            <div className="container">
+                <div className="box" style={{background : "red"}}></div>
+                <div className="box stack-top" style={{background : "blue"}}></div>
             </div>
         </div>
     );

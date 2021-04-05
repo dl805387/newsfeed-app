@@ -5,7 +5,7 @@ const axios = require('axios').default;
 function MyTweet() {
 
   return (
-    <div className="App">
+    <div>
         {/* A JSX comment */}
     </div>
   );

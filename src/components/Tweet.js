@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ReplyForm from "./ReplyForm";
 const axios = require('axios').default;
 // import css
 
@@ -9,6 +10,8 @@ function Tweet(props) {
     const [retweets, setRetweets] = useState(0);
     const [author, setAuthor] = useState("");
     const [likeButton, setLikeButton] = useState("");
+
+    const [replyDiv, setReplyDiv] = useState([]);
 
     // Get tweet using id and sets the states
     const retrieveTweet = async () => {
@@ -54,15 +57,25 @@ function Tweet(props) {
 
 
     // to do
-    // 
+    // reply
+    // find out how many replies are allowed on a single tweet
+    // can you reply to your own tweet
+
+    // how to implement
+    // have a reply button
+    // this button need to generate a form that overlays the screen
+
+    // to do overlay, use z-index on the div
 
     return (
-        <div className="App">
+        <div>
             <p>{author}</p>
             <p>{text}</p>
             <p>{"likes: " + likes}</p>
             <p>{"retweets: " + retweets}</p>
             <button onClick={e => {e.preventDefault(); likeTweet()}} >{likeButton}</button>
+            <button onClick={e => {e.preventDefault(); setReplyDiv(<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} />) }} >Reply</button>
+            <div>{replyDiv}</div>
         </div>
     );
 }

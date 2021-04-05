@@ -5,8 +5,9 @@ const axios = require('axios').default;
 // ideas
 // have this form component on top of website
 // make a tweet button that displays a white div overlay screen that also generates the form component
+// !importent you need to also have a button that generates the form component
 
-function Name() {
+function PostForm() {
 
     const [text, setText] = useState("");   // represents the text body
 
@@ -27,6 +28,7 @@ function Name() {
         return result;
     }
 
+    // this is for testing purposes
     const deleteTweet = async () => {
         const result = await axios({
             method: 'delete',
@@ -39,9 +41,10 @@ function Name() {
     useEffect(() => {
         //deleteTweet();
     }, []);
+    //
 
     return (
-        <div className="App">
+        <div>
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
                 <button onClick={e => {e.preventDefault(); postTweet(); setText("")}}>Tweet</button>
@@ -50,4 +53,4 @@ function Name() {
     );
 }
 
-export default Name;
+export default PostForm;
