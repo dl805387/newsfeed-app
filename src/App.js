@@ -35,11 +35,6 @@ function App() {
                     return <Tweet tweetID = {x.id} key = {x.id}/>
                 })}
             </div>
-
-            <div className="container">
-                <div className="box" style={{background : "red"}}></div>
-                <div className="box stack-top" style={{background : "blue"}}></div>
-            </div>
         </div>
     );
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 const axios = require('axios').default;
-// import css if you need to
 
 function ReplyForm(props) {
 
@@ -22,17 +21,19 @@ function ReplyForm(props) {
               "body": text
             },
         });
+        props.setReplyDiv([]);
         return result;
     }
 
     // to do
-    // make a x button
+    // change cancel button to x
 
     return (
         <div className="App">
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
-                <button onClick={e => {e.preventDefault(); replyTweet(); props.setReplyDiv([]);}}>Reply</button>
+                <button onClick={e => {e.preventDefault(); replyTweet();}}>Reply</button>
+                <button onClick={e => {e.preventDefault(); props.setReplyDiv([]);}}>Cancel</button>
             </div>
         </div>
     );
