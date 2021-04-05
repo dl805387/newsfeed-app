@@ -24,7 +24,6 @@ function Name() {
                 body: text
             },
         });
-        console.log(text);
         return result;
     }
 
@@ -37,25 +36,15 @@ function Name() {
         return result;
     }
 
-    // const oof = () => {
-    //     for (let i = 39655; i<= 39682; i++) {
-    //         deleteTweet(i);
-    //     }
-    // }
-
     useEffect(() => {
         //deleteTweet();
     }, []);
-    
-    //onSubmit={postTweet()}
 
     return (
         <div className="App">
             <div>
-                <form>
-                    <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
-                    <button onClick={e => {e.preventDefault(); postTweet(); setText("")}}>Tweet</button>
-                </form>
+                <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
+                <button onClick={e => {e.preventDefault(); postTweet(); setText("")}}>Tweet</button>
             </div>
         </div>
     );

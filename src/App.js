@@ -23,16 +23,20 @@ function App() {
         retrieveTweets();
     }, []);
 
-  return (
-    <div className="App">
-        <Form />
-        <div>
-            {tweetsData.slice([0], [50]).map(x => {
-                return <Tweet tweetID = {x.id} key = {x.id}/>
-            })}
+    // to do
+    // do this after myTweet is done
+    // if it is your tweet, then generate myTweet component, not Tweet
+
+    return (
+        <div className="App">
+            <Form />
+            <div>
+                {tweetsData.slice([0], [50]).map(x => {
+                    return <Tweet tweetID = {x.id} key = {x.id}/>
+                })}
+            </div>
         </div>
-    </div>
-  );
+    );
 }
 
 export default App;
