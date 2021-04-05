@@ -17,12 +17,16 @@ function RetweetForm(props) {
                 "body": text
             },
         });
+        props.setRetweets(props.retweets + 1);
         props.setRetweetDiv([]);
         return result;
     }
 
+    // to do
+    // show a visual of the original tweet
+
     return (
-        <div className="App">
+        <div>
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
                 <button onClick={e => {e.preventDefault(); retweet();}}>Retweet</button>

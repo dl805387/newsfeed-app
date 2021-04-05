@@ -15,3 +15,14 @@
     top: 30%;
     text-align: center;
 }
+
+.repliesView {
+    background-color: aquamarine;
+    border-style: solid;
+}
+
+/*
+    add an overlay affect where the screen turns dark besides the overlay div
+    need to display the divs on the screen even if the user is scrolling down
+    add scrollbar for replies view
+*/

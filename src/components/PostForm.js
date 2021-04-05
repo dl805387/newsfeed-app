@@ -37,8 +37,19 @@ function PostForm() {
         return result;
     }
 
+    const testReply = async () => {
+        const result = await axios({
+            method: 'get',
+            url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets/39636',
+            withCredentials: true,
+        });
+        console.log(result);
+        //console.log(result.data.replies);
+    }
+
     useEffect(() => {
         //deleteTweet();
+        //testReply();
     }, []);
     //
 

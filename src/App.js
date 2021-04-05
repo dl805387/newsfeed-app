@@ -27,6 +27,9 @@ function App() {
     // do this after myTweet is done
     // if it is your tweet, then generate myTweet component, not Tweet
 
+    // if i make a post, the tweets does not re render
+    // maybe a fix would be to add the <Tweet/> in a state
+
     return (
         <div className="App">
             <PostForm />

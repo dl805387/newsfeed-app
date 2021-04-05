@@ -29,7 +29,7 @@ function ReplyForm(props) {
     // change cancel button to x
 
     return (
-        <div className="App">
+        <div>
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
                 <button onClick={e => {e.preventDefault(); replyTweet();}}>Reply</button>

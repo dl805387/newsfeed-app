@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import RepliesView from "./RepliesView";
 import ReplyForm from "./ReplyForm";
 import RetweetForm from "./RetweetForm";
 const axios = require('axios').default;
@@ -10,9 +11,11 @@ function Tweet(props) {
     const [retweets, setRetweets] = useState(0);
     const [author, setAuthor] = useState("");
     const [likeButton, setLikeButton] = useState("");
+    const [replies, setReplies] = useState(0);
 
     const [replyDiv, setReplyDiv] = useState([]);
     const [retweetDiv, setRetweetDiv] = useState([]);
+    const [repliesDiv, setRepliesDiv] = useState([]);
 
     // Get tweet using id and sets the states
     const retrieveTweet = async () => {
@@ -30,6 +33,7 @@ function Tweet(props) {
         } else {
             setLikeButton("Unlike");
         }
+        setReplies(result.data.replyCount);
         return result;
     }
 
@@ -42,6 +46,7 @@ function Tweet(props) {
                 withCredentials: true,
             });
             setLikeButton("Unlike");
+            setLikes(likes + 1);
         } else {
             await axios({
                 method: 'put',
@@ -49,21 +54,20 @@ function Tweet(props) {
                 withCredentials: true,
             });
             setLikeButton("Like");
+            setLikes(likes - 1);
         }
     }
 
     useEffect(() => {
         retrieveTweet();
-    });
-
+    }, []);
 
     // to do
-    // reply
-    // find out how many replies are allowed on a single tweet
-    // can you reply to your own tweet
-    // find a way to display replies when button is clicked
+    // maybe get rid if the likes and retweet number in the button
+    // put number of replies in the reply button ex: see replies (3)
 
     // maybe specify if a tweet is a retweet
+    // show the original tweet; may do this in retweetform component
 
     return (
         <div className="tweet">
@@ -71,11 +75,17 @@ function Tweet(props) {
             <p>{text}</p>
             <p>{"likes: " + likes}</p>
             <p>{"retweets: " + retweets}</p>
-            <button onClick={e => {e.preventDefault(); likeTweet()}} >{likeButton}</button>
+            <button onClick={e => {e.preventDefault(); likeTweet()}} >{likeButton + " (" + likes + ")"}</button>
             <button onClick={e => {e.preventDefault(); setReplyDiv(<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} />) }} >Reply</button>
-            <button onClick={e => {e.preventDefault(); setRetweetDiv(<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} />) }} >Retweet</button>
+            <button onClick={e => {e.preventDefault(); setRetweetDiv(<RetweetForm tweetID = {props.tweetID} 
+                setRetweetDiv = {setRetweetDiv} setRetweets = {setRetweets} retweets = {retweets} />) }} >Retweet {" (" + retweets + ")"}
+            </button>
+            <button onClick={e => {e.preventDefault(); setRepliesDiv(<RepliesView tweetID = {props.tweetID} 
+                setRepliesDiv = {setRepliesDiv} setReplies = {setReplies} replies = {replies} />) }} >See Replies {" (" + replies + ")"}
+            </button>
             <div className="overlay">{replyDiv}</div>
             <div className="overlay">{retweetDiv}</div>
+            <div className="overlay">{repliesDiv}</div>
         </div>
     );
 }
