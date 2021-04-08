@@ -20,9 +20,6 @@ function RetweetForm(props) {
         return result;
     }
 
-    // to do
-    // show a visual of the original tweet
-
     return (
         <div>
             <div>

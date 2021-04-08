@@ -13,9 +13,15 @@ function Tweet(props) {
     const [likeButton, setLikeButton] = useState("");
     const [replies, setReplies] = useState(0);
 
+    // These below for for inserting components
     const [replyDiv, setReplyDiv] = useState([]);
     const [retweetDiv, setRetweetDiv] = useState([]);
     const [repliesDiv, setRepliesDiv] = useState([]);
+
+    // These are for showing the original tweet if the tweet is a retweet
+    const [oriTweet, setOriTweet] = useState("");
+    const [oriAuthor, setOriAuthor] = useState("");
+    const [isOri, setIsOri] = useState("");
 
     // Get tweet using id and sets the states
     const retrieveTweet = async () => {
@@ -24,16 +30,27 @@ function Tweet(props) {
             url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets/' + props.tweetID,
             withCredentials: true,
         });
+
         setText(result.data.body);
         setLikes(result.data.likeCount);
         setRetweets(result.data.retweetCount);
         setAuthor(result.data.author);
+
         if (result.data.isLiked === false) {
             setLikeButton("Like");
         } else {
             setLikeButton("Unlike");
         }
+
         setReplies(result.data.replyCount);
+
+        if (result.data.type === "retweet" && result.data.parent !== undefined) {
+            setOriTweet(result.data.parent.body);
+            setOriAuthor(result.data.parent.author);
+            setIsOri("Retweet");
+            // maybe put a border around original tweet to distinguish it
+        }
+
         return result;
     }
 
@@ -58,23 +75,32 @@ function Tweet(props) {
         }
     }
 
+    // const retweetShow = () => {
+    //     if (retweet === true) {
+    //         return true;
+    //     }
+    // }
+
     useEffect(() => {
         retrieveTweet();
     }, []);
 
     // to do
-    // maybe get rid if the likes and retweet number in the button
-    // put number of replies in the reply button ex: see replies (3)
+    // maybe get rid of the likes and retweet number in the button
 
-    // maybe specify if a tweet is a retweet
-    // show the original tweet; may do this in retweetform component
 
     return (
         <div className="tweet">
+            <p>{isOri}</p>
             <p>{author}</p>
             <p>{text}</p>
             <p>{"likes: " + likes}</p>
             <p>{"retweets: " + retweets}</p>
+
+            <div>
+                <p>{oriAuthor}</p>
+                <p>{oriTweet}</p>
+            </div>
 
             <button onClick={e => {e.preventDefault(); likeTweet()}} >{likeButton + " (" + likes + ")"}</button>
 
@@ -93,6 +119,7 @@ function Tweet(props) {
             <div className="overlay">{replyDiv}</div>
             <div className="overlay">{retweetDiv}</div>
             <div className="overlay">{repliesDiv}</div>
+
         </div>
     );
 }
