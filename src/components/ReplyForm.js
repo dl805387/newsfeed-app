@@ -21,17 +21,23 @@ function ReplyForm(props) {
               "body": text
             },
         });
+        props.setReplyDiv([]); 
+        props.setReplies(props.replies + 1);
         return result;
     }
 
     // to do
     // change cancel button to x
 
+    // !important
+    // if text field is empty, then change color of the button, and maybe make it unclickable
+    // do this for the edit form as well
+
     return (
         <div>
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
-                <button onClick={e => {e.preventDefault(); replyTweet(); props.setReplyDiv([]); props.setReplies(props.replies + 1);}}>Reply</button>
+                <button onClick={e => {e.preventDefault(); replyTweet();}}>Reply</button>
                 <button onClick={e => {e.preventDefault(); props.setReplyDiv([]);}}>Cancel</button>
             </div>
         </div>

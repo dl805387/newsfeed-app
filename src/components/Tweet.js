@@ -13,7 +13,7 @@ function Tweet(props) {
     const [likeButton, setLikeButton] = useState("");
     const [replies, setReplies] = useState(0);
 
-    // These below for for inserting components
+    // These below are for inserting components
     const [replyDiv, setReplyDiv] = useState([]);
     const [retweetDiv, setRetweetDiv] = useState([]);
     const [repliesDiv, setRepliesDiv] = useState([]);
