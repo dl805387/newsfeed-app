@@ -55,7 +55,7 @@ function MyTweet(props) {
             url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets/' + props.tweetID,
             withCredentials: true,
         });
-        
+
         // re-renders tweets
         // re-rendering will be based on if you are viewing tweets or my tweets
         if (props.setShowMyTweets === undefined) {
@@ -65,6 +65,10 @@ function MyTweet(props) {
             props.setShowMyTweets(false);
             props.setShowMyTweets(true);
         }
+
+        // turn off dark cover
+        props.setDarkCover(false);
+
         return result;
     }
 
@@ -85,16 +89,16 @@ function MyTweet(props) {
                 <p>{oriTweet}</p>
             </div>
 
-            <button onClick={e => {e.preventDefault(); setEditDiv(true) }} >Edit</button>
-            <button onClick={e => {e.preventDefault(); setReplyDiv(true) }} >Reply</button>
-            <button onClick={e => {e.preventDefault(); setRetweetDiv(true) }} >Retweet {" (" + retweets + ")"}</button>
-            <button onClick={e => {e.preventDefault(); setRepliesDiv(true) }} >See Replies {" (" + replies + ")"}</button>
+            <button onClick={e => {e.preventDefault(); setEditDiv(true); props.setDarkCover(true); }} >Edit</button>
+            <button onClick={e => {e.preventDefault(); setReplyDiv(true); props.setDarkCover(true); }} >Reply</button>
+            <button onClick={e => {e.preventDefault(); setRetweetDiv(true); props.setDarkCover(true); }} >Retweet {" (" + retweets + ")"}</button>
+            <button onClick={e => {e.preventDefault(); setRepliesDiv(true); props.setDarkCover(true); }} >See Replies {" (" + replies + ")"}</button>
             <button onClick={e => {e.preventDefault(); deleteTweet()}} >Delete</button>
             
-            { editDiv && (<EditForm tweetID = {props.tweetID} setEditDiv = {setEditDiv} setText = {setText} originalText = {text} />) }
-            { replyDiv && (<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} setReplies = {setReplies} replies = {replies} />) }
-            { retweetDiv && (<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} />) }
-            { repliesDiv && (<RepliesView tweetID = {props.tweetID} setRepliesDiv = {setRepliesDiv} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} />) }
+            { editDiv && (<EditForm tweetID = {props.tweetID} setEditDiv = {setEditDiv} setText = {setText} originalText = {text} setDarkCover = {props.setDarkCover} />) }
+            { replyDiv && (<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} setReplies = {setReplies} replies = {replies} setDarkCover = {props.setDarkCover} />) }
+            { retweetDiv && (<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} setDarkCover = {props.setDarkCover} />) }
+            { repliesDiv && (<RepliesView tweetID = {props.tweetID} setRepliesDiv = {setRepliesDiv} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} setDarkCover = {props.setDarkCover} />) }
 
         </div>
     );

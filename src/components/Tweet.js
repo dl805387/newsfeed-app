@@ -96,13 +96,13 @@ function Tweet(props) {
             </div>
 
             <button onClick={e => {e.preventDefault(); likeTweet()}} >{likeButton + " (" + likes + ")"}</button>
-            <button onClick={e => {e.preventDefault(); setReplyDiv(true) }} >Reply</button>
-            <button onClick={e => {e.preventDefault(); setRetweetDiv(true) }} >Retweet {" (" + retweets + ")"}</button>
-            <button onClick={e => {e.preventDefault(); setRepliesDiv(true) }} >See Replies {" (" + replies + ")"}</button>
+            <button onClick={e => {e.preventDefault(); setReplyDiv(true); props.setDarkCover(true); }} >Reply</button>
+            <button onClick={e => {e.preventDefault(); setRetweetDiv(true); props.setDarkCover(true); }} >Retweet {" (" + retweets + ")"}</button>
+            <button onClick={e => {e.preventDefault(); setRepliesDiv(true); props.setDarkCover(true); }} >See Replies {" (" + replies + ")"}</button>
             
-            { replyDiv && (<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} setReplies = {setReplies} replies = {replies} />) }
-            { retweetDiv && (<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} setShowTweets = {props.setShowTweets} />) }
-            { repliesDiv && (<RepliesView tweetID = {props.tweetID} setRepliesDiv = {setRepliesDiv} setShowTweets = {props.setShowTweets} />) }
+            { replyDiv && (<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} setReplies = {setReplies} replies = {replies} setDarkCover = {props.setDarkCover} />) }
+            { retweetDiv && (<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} setShowTweets = {props.setShowTweets} setDarkCover = {props.setDarkCover} />) }
+            { repliesDiv && (<RepliesView tweetID = {props.tweetID} setRepliesDiv = {setRepliesDiv} setShowTweets = {props.setShowTweets} setDarkCover = {props.setDarkCover} />) }
 
         </div>
     );

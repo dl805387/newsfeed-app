@@ -26,9 +26,9 @@ function TweetsView(props) {
             <div className="tweetsView">
                 {tweetsData.slice([0], [50]).map(x => {
                     if (x.isMine === true) {
-                        return <MyTweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} />
+                        return <MyTweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} setDarkCover = {props.setDarkCover} />
                     } else {
-                        return <Tweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} />
+                        return <Tweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} setDarkCover = {props.setDarkCover} />
                     }
                 })}
             </div>

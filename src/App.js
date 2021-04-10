@@ -13,6 +13,7 @@ function App() {
     const [showPost, setShowPost] = useState(false);
     const [showTweets, setShowTweets] = useState(false);
     const [showMyTweets, setShowMyTweets] = useState(false);
+    const [darkCover, setDarkCover] = useState(false); // used to make the screen dark besides the popup div
 
     // Adds tweet to the database
     const postTweet = async () => {
@@ -52,18 +53,20 @@ function App() {
 
     return (
         <div className="App">
+
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
                 <button onClick={e => {e.preventDefault(); postTweet(); setText("")}}>Tweet</button>
             </div>
 
-            <button onClick={e => {e.preventDefault(); setShowPost(true); }}>Tweet</button>
+            <button onClick={e => {e.preventDefault(); setShowPost(true); setDarkCover(true); }}>Tweet</button>
             <button onClick={e => {e.preventDefault(); setShowMyTweets(false); setShowTweets(true); }}>All tweets</button>
             <button onClick={e => {e.preventDefault(); setShowTweets(false); setShowMyTweets(true) }}>show my tweets</button>
 
-            { showPost && (<PostForm setShowPost = {setShowPost} setShowTweets = {setShowTweets} setShowMyTweets = {setShowMyTweets} showTweets = {showTweets} />) }
-            { showTweets && (<TweetsView setShowTweets = {setShowTweets} />) }
-            { showMyTweets && (<MyTweetsView setShowMyTweets = {setShowMyTweets} />) }
+            { showPost && (<PostForm setShowPost = {setShowPost} setShowTweets = {setShowTweets} setShowMyTweets = {setShowMyTweets} showTweets = {showTweets} setDarkCover = {setDarkCover} />) }
+            { showTweets && (<TweetsView setShowTweets = {setShowTweets} setDarkCover = {setDarkCover} />) }
+            { showMyTweets && (<MyTweetsView setShowMyTweets = {setShowMyTweets} setDarkCover = {setDarkCover} />) }
+            { darkCover && (<div className="darkOverlay"></div>) }
             
         </div>
     );

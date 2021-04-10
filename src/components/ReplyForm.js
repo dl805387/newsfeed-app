@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 const axios = require('axios').default;
 
 function ReplyForm(props) {
@@ -23,6 +23,10 @@ function ReplyForm(props) {
         });
         props.setReplyDiv(false); 
         props.setReplies(props.replies + 1);
+
+        // turn off dark cover
+        props.setDarkCover(false);
+
         return result;
     }
 
@@ -36,7 +40,7 @@ function ReplyForm(props) {
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
                 <button onClick={e => {e.preventDefault(); replyTweet();}}>Reply</button>
-                <button onClick={e => {e.preventDefault(); props.setReplyDiv(false);}}>Cancel</button>
+                <button onClick={e => {e.preventDefault(); props.setReplyDiv(false); props.setDarkCover(false); }}>Cancel</button>
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 const axios = require('axios').default;
 
 function RetweetForm(props) {
@@ -18,7 +18,7 @@ function RetweetForm(props) {
             },
         });
         props.setRetweetDiv(false);
-        
+
         // re-renders tweets
         // re-rendering will be based on if you are viewing tweets or my tweets
         if (props.setShowMyTweets === undefined) {
@@ -28,6 +28,10 @@ function RetweetForm(props) {
             props.setShowMyTweets(false);
             props.setShowMyTweets(true);
         }
+
+        // turn off dark cover
+        props.setDarkCover(false);
+
         return result;
     }
 
@@ -36,7 +40,7 @@ function RetweetForm(props) {
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
                 <button onClick={e => {e.preventDefault(); retweet(); }}>Retweet</button>
-                <button onClick={e => {e.preventDefault(); props.setRetweetDiv(false);}}>Cancel</button>
+                <button onClick={e => {e.preventDefault(); props.setRetweetDiv(false); props.setDarkCover(false); }}>Cancel</button>
             </div>
         </div>
     );

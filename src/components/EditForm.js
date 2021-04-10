@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 const axios = require('axios').default;
 
 function EditForm(props) {
@@ -21,6 +21,10 @@ function EditForm(props) {
         });
         props.setEditDiv(false);
         props.setText(text);
+        
+        // turn off dark cover
+        props.setDarkCover(false);
+
         return result;
     }
 
@@ -29,7 +33,7 @@ function EditForm(props) {
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
                 <button onClick={e => {e.preventDefault(); editTweet();}}>Update</button>
-                <button onClick={e => {e.preventDefault(); props.setEditDiv(false);}}>Cancel</button>
+                <button onClick={e => {e.preventDefault(); props.setEditDiv(false); props.setDarkCover(false); }}>Cancel</button>
             </div>
         </div>
     );

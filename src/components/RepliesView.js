@@ -28,6 +28,9 @@ function RepliesView(props) {
     useEffect(() => {
         retrieveReplies();
     }, []);
+
+    // to do
+    // maybe say no replies if they are no replies
     
     return (
         <div className="overlay">
@@ -36,13 +39,13 @@ function RepliesView(props) {
 
                 {repliesData.map(x => {
                     if (x.isMine === true) {
-                        return <MyTweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} />
+                        return <MyTweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} setDarkCover = {props.setDarkCover} />
                     } else {
-                        return <Tweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} />
+                        return <Tweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} setDarkCover = {props.setDarkCover} />
                     }
                 })}
 
-                <button onClick={e => {e.preventDefault(); props.setRepliesDiv(false);}}>Close</button>
+                <button onClick={e => {e.preventDefault(); props.setRepliesDiv(false); props.setDarkCover(false); }}>Close</button>
             </div>
         </div>
     );

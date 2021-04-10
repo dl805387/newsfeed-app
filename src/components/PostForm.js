@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 const axios = require('axios').default;
 
 function PostForm(props) {
@@ -30,6 +30,10 @@ function PostForm(props) {
             props.setShowMyTweets(false);
             props.setShowMyTweets(true);
         }
+
+        // turn off dark cover
+        props.setDarkCover(false);
+
         return result;
     }
 
@@ -38,7 +42,7 @@ function PostForm(props) {
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
                 <button onClick={e => {e.preventDefault(); postTweet(); setText("")}}>Tweet</button>
-                <button onClick={e => {e.preventDefault(); props.setShowPost(false);}}>Cancel</button>
+                <button onClick={e => {e.preventDefault(); props.setShowPost(false); props.setDarkCover(false); }}>Cancel</button>
             </div>
         </div>
     );
