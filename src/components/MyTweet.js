@@ -68,7 +68,7 @@ function MyTweet(props) {
                 <p>{oriTweet}</p>
             </div>
 
-            <button onClick={e => {e.preventDefault(); setEditDiv(<EditForm tweetID = {props.tweetID} setEditDiv = {setEditDiv} />) }} >Edit</button>
+            <button onClick={e => {e.preventDefault(); setEditDiv(<EditForm tweetID = {props.tweetID} setEditDiv = {setEditDiv} setText = {setText} />) }} >Edit</button>
 
             <button onClick={e => {e.preventDefault(); setReplyDiv(<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} 
                 setReplies = {setReplies} replies = {replies} />) }} >Reply

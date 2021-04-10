@@ -20,6 +20,7 @@ function EditForm(props) {
             },
         });
         props.setEditDiv([]);
+        props.setText(text);
         return result;
     }
 

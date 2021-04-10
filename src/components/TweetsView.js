@@ -3,7 +3,7 @@ import Tweet from './Tweet';
 import MyTweet from './MyTweet';
 const axios = require('axios').default;
 
-function Name(props) {
+function Name() {
 
     const [tweetsData, setTweetsData] = useState([]);
 
@@ -22,11 +22,11 @@ function Name(props) {
     }, []);
 
     return (
-        <div className="App">
+        <div>
             <div>
                 {tweetsData.slice([0], [50]).map(x => {
                     if (x.isMine === true) {
-                        return <MyTweet tweetID = {x.id} key = {x.id}/>
+                        return <MyTweet tweetID = {x.id} key = {x.id} />
                     } else {
                         return <Tweet tweetID = {x.id} key = {x.id}/>
                     }

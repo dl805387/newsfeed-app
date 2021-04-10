@@ -6,19 +6,18 @@ const axios = require('axios').default;
 
 function App() {
 
-    const [tweetsData, setTweetsData] = useState([]);
     //
     const [show, setShow] = useState(false);
     //
 
     useEffect(() => {
         //retrieveTweets();
+        setShow(true);
     }, []);
 
     // to do
 
     // if i make a post, the tweets does not re render
-    // maybe a fix would be to add the <Tweet/> in a state
 
     // maybe add a mytweets button
     // this displays all the tweets
@@ -26,7 +25,9 @@ function App() {
     return (
         <div className="App">
             <PostForm />
-            <TweetsView />
+            <button onClick={e => {e.preventDefault(); setShow(false); }}>do not show</button>
+            { show && (<TweetsView setShow = {setShow} />) }
+            
         </div>
     );
 }

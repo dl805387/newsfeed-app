@@ -14,7 +14,7 @@ function Tweet(props) {
     const [replies, setReplies] = useState(0);
 
     // These below are for inserting components
-    const [replyDiv, setReplyDiv] = useState([]);
+    const [replyDiv, setReplyDiv] = useState();
     const [retweetDiv, setRetweetDiv] = useState([]);
     const [repliesDiv, setRepliesDiv] = useState([]);
 
