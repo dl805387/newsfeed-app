@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 const axios = require('axios').default;
 
-// ideas
-// have this form component on top of website
-// make a tweet button that displays a white div overlay screen that also generates the form component
-// !importent you need to also have a button that generates the form component
-
 function PostForm(props) {
 
     const [text, setText] = useState("");   // represents the text body
@@ -25,9 +20,16 @@ function PostForm(props) {
             },
         });
         props.setShowPost(false);
-        // re-renders tweets 
-        props.setShowTweets(false);
-        props.setShowTweets(true);
+        
+        // re-renders tweets
+        // re-rendering will be based on if you are viewing tweets or my tweets
+        if (props.showTweets) {
+            props.setShowTweets(false);
+            props.setShowTweets(true);
+        } else {
+            props.setShowMyTweets(false);
+            props.setShowMyTweets(true);
+        }
         return result;
     }
 

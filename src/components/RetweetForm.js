@@ -18,14 +18,18 @@ function RetweetForm(props) {
             },
         });
         props.setRetweetDiv(false);
-        // re-renders tweets 
-        props.setShowTweets(false);
-        props.setShowTweets(true);
+        
+        // re-renders tweets
+        // re-rendering will be based on if you are viewing tweets or my tweets
+        if (props.setShowMyTweets === undefined) {
+            props.setShowTweets(false);
+            props.setShowTweets(true);
+        } else {
+            props.setShowMyTweets(false);
+            props.setShowMyTweets(true);
+        }
         return result;
     }
-
-    // to do
-    // when user retweets, add it to state without refreshing
 
     return (
         <div className="overlay">

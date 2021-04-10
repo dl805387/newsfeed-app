@@ -2,14 +2,17 @@ import './App.css';
 import React, { useState, useEffect } from "react";
 import PostForm from './components/PostForm';
 import TweetsView from './components/TweetsView';
+import MyTweetsView from './components/MyTweetsView';
 const axios = require('axios').default;
 
 function App() {
 
     const [text, setText] = useState("");   // represents the text body
 
-    const [showTweets, setShowTweets] = useState(false);
+    // These states below are used for conditional rendering
     const [showPost, setShowPost] = useState(false);
+    const [showTweets, setShowTweets] = useState(false);
+    const [showMyTweets, setShowMyTweets] = useState(false);
 
     // Adds tweet to the database
     const postTweet = async () => {
@@ -25,9 +28,16 @@ function App() {
                 body: text
             },
         });
-        // re-renders tweets 
-        setShowTweets(false);
-        setShowTweets(true);
+
+        // re-renders tweets
+        // re-rendering will be based on if you are viewing tweets or my tweets
+        if (showTweets) {
+            setShowTweets(false);
+            setShowTweets(true);
+        } else {
+            setShowMyTweets(false);
+            setShowMyTweets(true);
+        }
         return result;
     }
 
@@ -36,11 +46,9 @@ function App() {
     }, []);
 
     // to do
-
-    // if i make a post, the tweets does not re render
-
-    // maybe add a mytweets button
-    // this displays all the tweets
+    // do thorough testing before submitting
+    // such as testing on replies view
+    // testing to see if view changes
 
     return (
         <div className="App">
@@ -50,10 +58,12 @@ function App() {
             </div>
 
             <button onClick={e => {e.preventDefault(); setShowPost(true); }}>Tweet</button>
-            <button onClick={e => {e.preventDefault(); setShowTweets(false); }}>do not show</button>
+            <button onClick={e => {e.preventDefault(); setShowMyTweets(false); setShowTweets(true); }}>All tweets</button>
+            <button onClick={e => {e.preventDefault(); setShowTweets(false); setShowMyTweets(true) }}>show my tweets</button>
 
-            { showPost && (<PostForm setShowPost = {setShowPost} setShowTweets = {setShowTweets} />) }
+            { showPost && (<PostForm setShowPost = {setShowPost} setShowTweets = {setShowTweets} setShowMyTweets = {setShowMyTweets} showTweets = {showTweets} />) }
             { showTweets && (<TweetsView setShowTweets = {setShowTweets} />) }
+            { showMyTweets && (<MyTweetsView setShowMyTweets = {setShowMyTweets} />) }
             
         </div>
     );

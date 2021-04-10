@@ -27,8 +27,6 @@ function ReplyForm(props) {
     }
 
     // to do
-    // change cancel button to x
-
     // !important
     // if text field is empty, then change color of the button, and maybe make it unclickable
     // do this for the edit form as well

@@ -36,9 +36,9 @@ function RepliesView(props) {
 
                 {repliesData.map(x => {
                     if (x.isMine === true) {
-                        return <MyTweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} />
+                        return <MyTweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} />
                     } else {
-                        return <Tweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} />
+                        return <Tweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} />
                     }
                 })}
 
