@@ -17,6 +17,9 @@ function RetweetForm(props) {
                 "body": text
             },
         });
+        props.setRetweetDiv(false);
+        props.setShowTweets(false);
+        props.setShowTweets(true);
         return result;
     }
 
@@ -27,7 +30,7 @@ function RetweetForm(props) {
         <div className="overlay">
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
-                <button onClick={e => {e.preventDefault(); retweet(); props.setRetweets(props.retweets + 1); props.setRetweetDiv(false);}}>Retweet</button>
+                <button onClick={e => {e.preventDefault(); retweet(); }}>Retweet</button>
                 <button onClick={e => {e.preventDefault(); props.setRetweetDiv(false);}}>Cancel</button>
             </div>
         </div>

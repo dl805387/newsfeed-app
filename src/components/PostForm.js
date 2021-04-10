@@ -6,7 +6,7 @@ const axios = require('axios').default;
 // make a tweet button that displays a white div overlay screen that also generates the form component
 // !importent you need to also have a button that generates the form component
 
-function PostForm() {
+function PostForm(props) {
 
     const [text, setText] = useState("");   // represents the text body
 
@@ -24,14 +24,18 @@ function PostForm() {
                 body: text
             },
         });
+        props.setShowPost(false);
+        props.setShowTweets(false);
+        props.setShowTweets(true);
         return result;
     }
 
     return (
-        <div>
+        <div className="overlay">
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
                 <button onClick={e => {e.preventDefault(); postTweet(); setText("")}}>Tweet</button>
+                <button onClick={e => {e.preventDefault(); props.setShowPost(false);}}>Cancel</button>
             </div>
         </div>
     );

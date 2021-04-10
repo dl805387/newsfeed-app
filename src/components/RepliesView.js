@@ -27,6 +27,11 @@ function RepliesView(props) {
     useEffect(() => {
         retrieveReplies();
     }, []);
+
+    // to do
+    // retweet a reply is broken
+    // and a bunch of other stuff too probably because of the props issue
+    // reply need to generate mytweet aswell
     
     return (
         <div className="overlay">

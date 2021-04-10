@@ -55,6 +55,8 @@ function MyTweet(props) {
             url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets/' + props.tweetID,
             withCredentials: true,
         });
+        props.setShowTweets(false);
+        props.setShowTweets(true);
         return result;
     }
 
@@ -86,7 +88,7 @@ function MyTweet(props) {
             
             { editDiv && (<EditForm tweetID = {props.tweetID} setEditDiv = {setEditDiv} setText = {setText} originalText = {text} />) }
             { replyDiv && (<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} setReplies = {setReplies} replies = {replies} />) }
-            { retweetDiv && (<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} setRetweets = {setRetweets} retweets = {retweets} />) }
+            { retweetDiv && (<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} setShowTweets = {props.setShowTweets} />) }
             { repliesDiv && (<RepliesView tweetID = {props.tweetID} setRepliesDiv = {setRepliesDiv} />) }
 
         </div>

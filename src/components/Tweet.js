@@ -101,7 +101,7 @@ function Tweet(props) {
             <button onClick={e => {e.preventDefault(); setRepliesDiv(true) }} >See Replies {" (" + replies + ")"}</button>
             
             { replyDiv && (<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} setReplies = {setReplies} replies = {replies} />) }
-            { retweetDiv && (<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} setRetweets = {setRetweets} retweets = {retweets} />) }
+            { retweetDiv && (<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} setShowTweets = {props.setShowTweets} />) }
             { repliesDiv && (<RepliesView tweetID = {props.tweetID} setRepliesDiv = {setRepliesDiv} />) }
 
         </div>

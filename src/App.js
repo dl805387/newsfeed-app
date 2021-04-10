@@ -6,10 +6,32 @@ const axios = require('axios').default;
 
 function App() {
 
-    const [show, setShow] = useState(false);
+    const [text, setText] = useState("");   // represents the text body
+
+    const [showTweets, setShowTweets] = useState(false);
+    const [showPost, setShowPost] = useState(false);
+
+    // Adds tweet to the database
+    const postTweet = async () => {
+        // Will not post if text field is empty
+        if (text === "") {
+            return;
+        }
+        const result = await axios({
+            method: 'post',
+            url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets',
+            withCredentials: true,
+            data: {
+                body: text
+            },
+        });
+        setShowTweets(false);
+        setShowTweets(true);
+        return result;
+    }
 
     useEffect(() => {
-        setShow(true);
+        setShowTweets(true);
     }, []);
 
     // to do
@@ -21,9 +43,16 @@ function App() {
 
     return (
         <div className="App">
-            <PostForm />
-            <button onClick={e => {e.preventDefault(); setShow(false); }}>do not show</button>
-            { show && (<TweetsView setShow = {setShow} />) }
+            <div>
+                <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
+                <button onClick={e => {e.preventDefault(); postTweet(); setText("")}}>Tweet</button>
+            </div>
+
+            <button onClick={e => {e.preventDefault(); setShowPost(true); }}>Tweet</button>
+            <button onClick={e => {e.preventDefault(); setShowTweets(false); }}>do not show</button>
+
+            { showPost && (<PostForm setShowPost = {setShowPost} setShowTweets = {setShowTweets} />) }
+            { showTweets && (<TweetsView setShowTweets = {setShowTweets} />) }
             
         </div>
     );

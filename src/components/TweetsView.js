@@ -3,7 +3,7 @@ import Tweet from './Tweet';
 import MyTweet from './MyTweet';
 const axios = require('axios').default;
 
-function Name() {
+function TweetsView(props) {
 
     const [tweetsData, setTweetsData] = useState([]);
 
@@ -26,9 +26,9 @@ function Name() {
             <div>
                 {tweetsData.slice([0], [50]).map(x => {
                     if (x.isMine === true) {
-                        return <MyTweet tweetID = {x.id} key = {x.id} />
+                        return <MyTweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} />
                     } else {
-                        return <Tweet tweetID = {x.id} key = {x.id}/>
+                        return <Tweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} />
                     }
                 })}
             </div>
@@ -36,4 +36,4 @@ function Name() {
     );
 }
 
-export default Name;
+export default TweetsView;
