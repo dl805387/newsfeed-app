@@ -2,13 +2,13 @@
   text-align: center;
 }
 
-.tweet {
+.tweetsView {
     z-index: 1;
 }
 
 .overlay {   
-    z-index: 2;
-    position: absolute;
+    z-index: 3;
+    position: fixed;
     margin: auto;
     left: 0;
     right: 0;
@@ -21,9 +21,11 @@
     border-style: solid;
 }
 
+
+
 /*
     add an overlay affect where the screen turns dark besides the overlay div
-    need to display the divs on the screen even if the user is scrolling down
+    
     add scrollbar for replies view
 
 
@@ -34,4 +36,6 @@
     // you can also not do this because we want to scroll up when retweet
 
     // maybe when user deletes, show something on the screen that says delete successful
+
+    // set size for textbox and prevent resizing
 */
