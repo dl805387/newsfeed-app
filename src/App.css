@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .tweetsView {
     z-index: 1;
 }
@@ -35,6 +31,50 @@
     cursor: pointer;
     display: block;
 }
+
+.card {
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.counters {
+    display: flex;
+}
+
+.likes {
+    margin-right: 5%;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important; 
+}
+
+.card-content {
+    padding-bottom: 0 !important; 
+}
+
+.retweet {
+    border-style: solid;
+    border-color: rgb(179, 169, 169);
+    border-width: thin;
+    border-radius: 25px;
+    padding: 2%;
+    width: 80%;
+    margin-top: 0%;
+    margin-bottom: 5%;
+    margin-left: auto; 
+    margin-right: 0;
+}
+
+.isOri {
+    width: 80%;
+    margin-left: auto; 
+    margin-right: 0;
+    margin-bottom: 0 !important;
+    margin-top: 5% !important;
+    text-decoration: underline;
+}
+
 
 
 

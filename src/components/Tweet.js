@@ -75,35 +75,55 @@ function Tweet(props) {
         }
     }
 
+    // Turns off the style for retweet if the tweet is not a retweet
+    const isRetweet = () => {
+        if (isOri === "") {
+            return "revert";
+        }
+    }
+
     useEffect(() => {
         retrieveTweet();
     }, []);
 
-    // to do
-    // maybe get rid of the likes and retweet number in the button
-
     return (
         <div className="tweet">
-            <p>{isOri}</p>
-            <p>{author}</p>
-            <p>{text}</p>
-            <p>{"likes: " + likes}</p>
-            <p>{"retweets: " + retweets}</p>
 
-            <div>
-                <p>{oriAuthor}</p>
-                <p>{oriTweet}</p>
-            </div>
+            <div className="card">
 
-            <button onClick={e => {e.preventDefault(); likeTweet()}} >{likeButton + " (" + likes + ")"}</button>
-            <button onClick={e => {e.preventDefault(); setReplyDiv(true); props.setDarkCover(true); }} >Reply</button>
-            <button onClick={e => {e.preventDefault(); setRetweetDiv(true); props.setDarkCover(true); }} >Retweet {" (" + retweets + ")"}</button>
-            <button onClick={e => {e.preventDefault(); setRepliesDiv(true); props.setDarkCover(true); }} >See Replies {" (" + replies + ")"}</button>
-            
+                <header className="card-header">
+                    <p className="card-header-title">{author}</p>
+                </header>
+
+                <div className="card-content">
+                    <div className="content">
+                        <p>{text}</p>
+
+                        <p className="isOri" style={{all: isRetweet()}}>{author + " " + isOri + "ed"}</p>
+                        <div className="retweet" style={{all: isRetweet()}}>
+                            <p>{oriAuthor}</p>
+                            <p>{oriTweet}</p>
+                        </div>
+
+                        <div className="counters">
+                            <p className="likes">{"likes: " + likes}</p>
+                            <p>{"retweets: " + retweets}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <footer className="card-footer">
+                    <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); likeTweet()}} >{likeButton}</button>
+                    <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); setReplyDiv(true); props.setDarkCover(true); }} >Reply</button>
+                    <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); setRetweetDiv(true); props.setDarkCover(true); }} >Retweet</button>
+                    <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); setRepliesDiv(true); props.setDarkCover(true); }} >See Replies {" (" + replies + ")"}</button>
+                </footer>   
+            </div> 
+
             { replyDiv && (<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} setReplies = {setReplies} replies = {replies} setDarkCover = {props.setDarkCover} />) }
             { retweetDiv && (<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} setShowTweets = {props.setShowTweets} setDarkCover = {props.setDarkCover} />) }
             { repliesDiv && (<RepliesView tweetID = {props.tweetID} setRepliesDiv = {setRepliesDiv} setShowTweets = {props.setShowTweets} setDarkCover = {props.setDarkCover} />) }
-
+                
         </div>
     );
 }
