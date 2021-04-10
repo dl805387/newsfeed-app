@@ -20,6 +20,9 @@ function RetweetForm(props) {
         return result;
     }
 
+    // to do
+    // when user retweets, add it to state without refreshing
+
     return (
         <div className="overlay">
             <div>

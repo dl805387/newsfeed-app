@@ -3,7 +3,7 @@ const axios = require('axios').default;
 
 function EditForm(props) {
 
-    const [text, setText] = useState("");
+    const [text, setText] = useState(props.originalText);
 
     // Request to edit tweet
     const editTweet = async () => {

@@ -62,6 +62,9 @@ function MyTweet(props) {
         retrieveTweet();
     }, []);
 
+    // to do
+    // when user deletes tweet, update state
+
     return (
         <div className="tweet">
             <p>{isOri}</p>
@@ -81,7 +84,7 @@ function MyTweet(props) {
             <button onClick={e => {e.preventDefault(); setRepliesDiv(true) }} >See Replies {" (" + replies + ")"}</button>
             <button onClick={e => {e.preventDefault(); deleteTweet()}} >Delete</button>
             
-            { editDiv && (<EditForm tweetID = {props.tweetID} setEditDiv = {setEditDiv} setText = {setText} />) }
+            { editDiv && (<EditForm tweetID = {props.tweetID} setEditDiv = {setEditDiv} setText = {setText} originalText = {text} />) }
             { replyDiv && (<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} setReplies = {setReplies} replies = {replies} />) }
             { retweetDiv && (<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} setRetweets = {setRetweets} retweets = {retweets} />) }
             { repliesDiv && (<RepliesView tweetID = {props.tweetID} setRepliesDiv = {setRepliesDiv} />) }

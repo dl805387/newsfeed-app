@@ -49,7 +49,6 @@ function Tweet(props) {
             setOriTweet(result.data.parent.body);
             setOriAuthor(result.data.parent.author);
             setIsOri("Retweet");
-            // maybe put a border around original tweet to distinguish it
         }
 
         return result;
