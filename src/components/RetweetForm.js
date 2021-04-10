@@ -18,6 +18,7 @@ function RetweetForm(props) {
             },
         });
         props.setRetweetDiv(false);
+        // re-renders tweets 
         props.setShowTweets(false);
         props.setShowTweets(true);
         return result;

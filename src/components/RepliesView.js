@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Tweet from './Tweet';
+import MyTweet from './MyTweet';
 const axios = require('axios').default;
 
 function RepliesView(props) {
 
-    const [ids, setIds] = useState([]);
+    const [repliesData, setRepliesData] = useState([]);
     
     // Get replies for a tweet using id
     const retrieveReplies = async () => {
@@ -17,29 +18,28 @@ function RepliesView(props) {
         let array = [];
         if (result.data.replyCount !== 0) {
             result.data.replies.map(x => {
-                return array.push(x.id);
+                return array.push(x);
             });
         }
-        setIds(array);
+        setRepliesData(array);
         return result;
     }
 
     useEffect(() => {
         retrieveReplies();
     }, []);
-
-    // to do
-    // retweet a reply is broken
-    // and a bunch of other stuff too probably because of the props issue
-    // reply need to generate mytweet aswell
     
     return (
         <div className="overlay">
             <div className="repliesView">
                 <p>replies</p>
 
-                {ids.map(x => {
-                    return <Tweet tweetID = {x} key = {x}/>
+                {repliesData.map(x => {
+                    if (x.isMine === true) {
+                        return <MyTweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} />
+                    } else {
+                        return <Tweet tweetID = {x.id} key = {x.id} setShowTweets = {props.setShowTweets} />
+                    }
                 })}
 
                 <button onClick={e => {e.preventDefault(); props.setRepliesDiv(false);}}>Close</button>

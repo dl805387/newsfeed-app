@@ -25,6 +25,7 @@ function App() {
                 body: text
             },
         });
+        // re-renders tweets 
         setShowTweets(false);
         setShowTweets(true);
         return result;

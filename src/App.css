@@ -32,4 +32,6 @@
     // when you click on delete, the page scrolls up because tweetsview gets shortened
     // you might be able to fix this by increasing the height by css styling
     // you can also not do this because we want to scroll up when retweet
+
+    // maybe when user deletes, show something on the screen that says delete successful
 */

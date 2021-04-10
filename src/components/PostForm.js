@@ -25,6 +25,7 @@ function PostForm(props) {
             },
         });
         props.setShowPost(false);
+        // re-renders tweets 
         props.setShowTweets(false);
         props.setShowTweets(true);
         return result;
