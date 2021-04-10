@@ -21,7 +21,7 @@ function ReplyForm(props) {
               "body": text
             },
         });
-        props.setReplyDiv([]); 
+        props.setReplyDiv(false); 
         props.setReplies(props.replies + 1);
         return result;
     }
@@ -34,11 +34,11 @@ function ReplyForm(props) {
     // do this for the edit form as well
 
     return (
-        <div>
+        <div className="overlay">
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
                 <button onClick={e => {e.preventDefault(); replyTweet();}}>Reply</button>
-                <button onClick={e => {e.preventDefault(); props.setReplyDiv([]);}}>Cancel</button>
+                <button onClick={e => {e.preventDefault(); props.setReplyDiv(false);}}>Cancel</button>
             </div>
         </div>
     );

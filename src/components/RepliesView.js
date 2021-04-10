@@ -27,16 +27,18 @@ function RepliesView(props) {
     useEffect(() => {
         retrieveReplies();
     }, []);
-
+    
     return (
-        <div className="repliesView">
-            <p>replies</p>
+        <div className="overlay">
+            <div className="repliesView">
+                <p>replies</p>
 
-            {ids.map(x => {
-                return <Tweet tweetID = {x} key = {x}/>
-            })}
-            
-            <button onClick={e => {e.preventDefault(); props.setRepliesDiv([]);}}>Close</button>
+                {ids.map(x => {
+                    return <Tweet tweetID = {x} key = {x}/>
+                })}
+
+                <button onClick={e => {e.preventDefault(); props.setRepliesDiv(false);}}>Close</button>
+            </div>
         </div>
     );
 }

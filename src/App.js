@@ -6,12 +6,9 @@ const axios = require('axios').default;
 
 function App() {
 
-    //
     const [show, setShow] = useState(false);
-    //
 
     useEffect(() => {
-        //retrieveTweets();
         setShow(true);
     }, []);
 

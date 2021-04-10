@@ -21,11 +21,11 @@ function RetweetForm(props) {
     }
 
     return (
-        <div>
+        <div className="overlay">
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
-                <button onClick={e => {e.preventDefault(); retweet(); props.setRetweets(props.retweets + 1); props.setRetweetDiv([]);}}>Retweet</button>
-                <button onClick={e => {e.preventDefault(); props.setRetweetDiv([]);}}>Cancel</button>
+                <button onClick={e => {e.preventDefault(); retweet(); props.setRetweets(props.retweets + 1); props.setRetweetDiv(false);}}>Retweet</button>
+                <button onClick={e => {e.preventDefault(); props.setRetweetDiv(false);}}>Cancel</button>
             </div>
         </div>
     );

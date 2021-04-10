@@ -19,7 +19,7 @@ function EditForm(props) {
               body: text
             },
         });
-        props.setEditDiv([]);
+        props.setEditDiv(false);
         props.setText(text);
         return result;
     }
@@ -29,11 +29,11 @@ function EditForm(props) {
     // make sure to change this
 
     return (
-        <div>
+        <div className="overlay">
             <div>
                 <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
                 <button onClick={e => {e.preventDefault(); editTweet();}}>Update</button>
-                <button onClick={e => {e.preventDefault(); props.setEditDiv([]);}}>Cancel</button>
+                <button onClick={e => {e.preventDefault(); props.setEditDiv(false);}}>Cancel</button>
             </div>
         </div>
     );
