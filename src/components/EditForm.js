@@ -24,10 +24,6 @@ function EditForm(props) {
         return result;
     }
 
-    // to do
-    // after you click edit, the tweet does not show the new edited tweet without refreshing page
-    // make sure to change this
-
     return (
         <div className="overlay">
             <div>

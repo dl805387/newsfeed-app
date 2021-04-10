@@ -13,12 +13,12 @@ function Tweet(props) {
     const [likeButton, setLikeButton] = useState("");
     const [replies, setReplies] = useState(0);
 
-    // These below are for inserting components
+    // These below are used for inserting components when state becomes true
     const [replyDiv, setReplyDiv] = useState(false);
     const [retweetDiv, setRetweetDiv] = useState(false);
     const [repliesDiv, setRepliesDiv] = useState(false);
 
-    // These are for showing the original tweet if the tweet is a retweet
+    // These are for the retweeted tweet
     const [oriTweet, setOriTweet] = useState("");
     const [oriAuthor, setOriAuthor] = useState("");
     const [isOri, setIsOri] = useState("");
@@ -44,6 +44,7 @@ function Tweet(props) {
 
         setReplies(result.data.replyCount);
 
+        // Shows original tweet if this tweet is a retweet
         if (result.data.type === "retweet" && result.data.parent !== undefined) {
             setOriTweet(result.data.parent.body);
             setOriAuthor(result.data.parent.author);
@@ -75,19 +76,12 @@ function Tweet(props) {
         }
     }
 
-    // const retweetShow = () => {
-    //     if (retweet === true) {
-    //         return true;
-    //     }
-    // }
-
     useEffect(() => {
         retrieveTweet();
     }, []);
 
     // to do
     // maybe get rid of the likes and retweet number in the button
-
 
     return (
         <div className="tweet">

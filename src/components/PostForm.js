@@ -27,32 +27,6 @@ function PostForm() {
         return result;
     }
 
-    // this is for testing purposes
-    const deleteTweet = async () => {
-        const result = await axios({
-            method: 'delete',
-            url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets/39691',
-            withCredentials: true,
-        });
-        return result;
-    }
-
-    const testReply = async () => {
-        const result = await axios({
-            method: 'get',
-            url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets/39636',
-            withCredentials: true,
-        });
-        console.log(result);
-        //console.log(result.data.replies);
-    }
-
-    useEffect(() => {
-        //deleteTweet();
-        //testReply();
-    }, []);
-    //
-
     return (
         <div>
             <div>

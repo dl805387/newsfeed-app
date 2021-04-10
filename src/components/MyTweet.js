@@ -13,13 +13,13 @@ function MyTweet(props) {
     const [author, setAuthor] = useState("");
     const [replies, setReplies] = useState(0);
 
-    // These below are for inserting components
+    // These below are used for inserting components when state becomes true
     const [replyDiv, setReplyDiv] = useState(false);
     const [retweetDiv, setRetweetDiv] = useState(false);
     const [repliesDiv, setRepliesDiv] = useState(false);
     const [editDiv, setEditDiv] = useState(false);
 
-    // These are for showing the original tweet if the tweet is a retweet
+    // These are for the retweeted tweet
     const [oriTweet, setOriTweet] = useState("");
     const [oriAuthor, setOriAuthor] = useState("");
     const [isOri, setIsOri] = useState("");
@@ -38,6 +38,7 @@ function MyTweet(props) {
         setAuthor(result.data.author);
         setReplies(result.data.replyCount);
 
+        // Shows original tweet if this tweet is a retweet
         if (result.data.type === "retweet" && result.data.parent !== undefined) {
             setOriTweet(result.data.parent.body);
             setOriAuthor(result.data.parent.author);
@@ -47,13 +48,19 @@ function MyTweet(props) {
         return result;
     }
 
+    // Deletes the tweet from the database
+    const deleteTweet = async () => {
+        const result = await axios({
+            method: 'delete',
+            url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets/' + props.tweetID,
+            withCredentials: true,
+        });
+        return result;
+    }
+
     useEffect(() => {
         retrieveTweet();
     }, []);
-
-    // to do
-    // implement update and delete tweet
-    // this will show likes but no button
 
     return (
         <div className="tweet">
@@ -72,6 +79,7 @@ function MyTweet(props) {
             <button onClick={e => {e.preventDefault(); setReplyDiv(true) }} >Reply</button>
             <button onClick={e => {e.preventDefault(); setRetweetDiv(true) }} >Retweet {" (" + retweets + ")"}</button>
             <button onClick={e => {e.preventDefault(); setRepliesDiv(true) }} >See Replies {" (" + replies + ")"}</button>
+            <button onClick={e => {e.preventDefault(); deleteTweet()}} >Delete</button>
             
             { editDiv && (<EditForm tweetID = {props.tweetID} setEditDiv = {setEditDiv} setText = {setText} />) }
             { replyDiv && (<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} setReplies = {setReplies} replies = {replies} />) }
