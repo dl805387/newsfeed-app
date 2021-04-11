@@ -122,7 +122,7 @@ function MyTweet(props) {
                     <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); setReplyDiv(true); props.setDarkCover(true); }} >Reply</button>
                     <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); setRetweetDiv(true); props.setDarkCover(true); }} >Retweet</button>
                     <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); setRepliesDiv(true); props.setDarkCover(true); }} >See Replies {" (" + replies + ")"}</button>
-                    <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); deleteTweet()}} >Delete</button>
+                    <button className="button is-danger is-outlined card-footer-item" onClick={e => {e.preventDefault(); deleteTweet()}} >Delete</button>
                 </footer> 
             </div>
 

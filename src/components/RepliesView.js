@@ -25,17 +25,22 @@ function RepliesView(props) {
         return result;
     }
 
+    const anyReplies = () => {
+        if (repliesData.length === 0) {
+            return "No Replies";
+        } else {
+            return "Replies";
+        }
+    }
+
     useEffect(() => {
         retrieveReplies();
     }, []);
-
-    // to do
-    // maybe say no replies if they are no replies
     
     return (
-        <div className="overlay">
+        <div className="repliesPopup">
             <div className="repliesView">
-                <p>replies</p>
+                <p className="title">{anyReplies()}</p>
 
                 {repliesData.map(x => {
                     if (x.isMine === true) {

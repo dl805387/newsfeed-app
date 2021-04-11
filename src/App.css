@@ -139,6 +139,15 @@
     float: right;
 }
 
+.repliesPopup{   
+    z-index: 3;
+    position: sticky;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 30%;
+    text-align: center;
+}
 
 
 
@@ -147,22 +156,6 @@
 
 
 /*
-
-    !important
-    add scrollbar for replies view
-    if you cant do this, then maybe make the replies view overview not fixes (this may not work)
-
-
-
-    // when you click on delete, the page scrolls up because tweetsview gets shortened
-    // you might be able to fix this by increasing the height by css styling
-    // you can also not do this because we want to scroll up when retweet
-
-    // maybe when user deletes, show something on the screen that says delete successful
-
-    // add picture of bird; already have one saved
-    // make the bird pic position fixed
-
     // infinite scrolling
     // look up intersection observer infinite scrolling react
 */

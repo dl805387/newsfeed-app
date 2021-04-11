@@ -63,7 +63,7 @@ function App() {
             
             <div className="btnGroup">
                 <button className="viewBtn leftB" onClick={e => {e.preventDefault(); setShowMyTweets(false); setShowTweets(true); }}>All Tweets</button>
-                <button className="viewBtn rightB" onClick={e => {e.preventDefault(); setShowTweets(false); setShowMyTweets(true) }}>Show My Tweets</button>
+                <button className="viewBtn rightB" onClick={e => {e.preventDefault(); setShowTweets(false); setShowMyTweets(true) }}>My Tweets</button>
             </div>
 
             { showPost && (<PostForm setShowPost = {setShowPost} setShowTweets = {setShowTweets} setShowMyTweets = {setShowMyTweets} showTweets = {showTweets} setDarkCover = {setDarkCover} />) }
