@@ -37,10 +37,10 @@ function RetweetForm(props) {
 
     return (
         <div className="overlay">
-            <div>
-                <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
-                <button onClick={e => {e.preventDefault(); retweet(); }}>Retweet</button>
-                <button onClick={e => {e.preventDefault(); props.setRetweetDiv(false); props.setDarkCover(false); }}>Cancel</button>
+            <div className="popup">
+                <textarea className="textarea has-fixed-size" onChange={e => setText(e.target.value)} value={text}> </textarea>
+                <button className="button is-info is-outlined" onClick={e => {e.preventDefault(); retweet(); }}>Retweet</button>
+                <button className="button is-danger is-outlined" onClick={e => {e.preventDefault(); props.setRetweetDiv(false); props.setDarkCover(false); }}>Cancel</button>
             </div>
         </div>
     );

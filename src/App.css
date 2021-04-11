@@ -35,18 +35,21 @@
 .card {
     width: 50%;
     margin: auto;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 2%;
+    margin-bottom: 4%;
 }
 
 .counters {
     display: flex;
 }
 
-.likes {
+.likesRet {
     margin-right: 5%;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important; 
+    margin-top: 7% !important;
+    font-size: 15px;
+    color: black;
 }
 
 .card-content {
@@ -57,7 +60,7 @@
     border-style: solid;
     border-color: rgb(179, 169, 169);
     border-width: thin;
-    border-radius: 25px;
+    border-radius: 15px;
     padding: 2%;
     width: 80%;
     margin-top: 0%;
@@ -75,6 +78,71 @@
     text-decoration: underline;
 }
 
+.popup {
+    width: 50% !important;
+    margin: auto;
+    background-color: white;
+    padding: 1%;
+    border-radius: 15px;
+}
+
+.btnGroup .viewBtn {
+    background-color: #000000; /* Green */
+    border: 1px solid white;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btnGroup .viewBtn:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+.viewBtn:hover {
+    background-color: #a9f0f0;
+    color: black;
+}
+
+.viewBtn {
+    outline: 0;
+    width: 50%;
+    font-size: 18px !important;
+    padding-bottom: 2% !important;
+    padding-top: 2% !important;
+}
+
+.leftB {
+    border-top-left-radius: 20px;
+}
+
+.rightB {
+    border-top-right-radius: 20px;
+}
+
+.btnGroup {
+    width: 35%;
+    margin: auto;
+    margin-top: 5%;
+}
+
+.tweetBtn {
+    margin: 1%;
+    position: fixed;
+    font-size: 30px;
+}
+
+.postbtn {
+    float: right;
+}
+
+
+
+
+
 
 
 
@@ -85,7 +153,6 @@
     if you cant do this, then maybe make the replies view overview not fixes (this may not work)
 
 
-    // maybe put a border around original tweet to distinguish it from retweet
 
     // when you click on delete, the page scrolls up because tweetsview gets shortened
     // you might be able to fix this by increasing the height by css styling
@@ -93,5 +160,9 @@
 
     // maybe when user deletes, show something on the screen that says delete successful
 
-    // set size for textbox and prevent resizing
+    // add picture of bird; already have one saved
+    // make the bird pic position fixed
+
+    // infinite scrolling
+    // look up intersection observer infinite scrolling react
 */

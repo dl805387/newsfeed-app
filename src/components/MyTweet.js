@@ -72,40 +72,64 @@ function MyTweet(props) {
         return result;
     }
 
+    // Turns off the style for retweet if the tweet is not a retweet
+    const isRetweet = () => {
+        if (isOri === "") {
+            return "revert";
+        }
+    }
+
+    // If tweet is a retweet, then this will return "<author name> retweeted"
+    const retweetHeader = () => {
+        if (isOri === "") {
+            return isOri;
+        } else {
+            return author + " " + isOri + "ed";
+        }
+    }
+
     useEffect(() => {
         retrieveTweet();
     }, []);
 
     return (
-        <div className="tweet">
+        <div>
 
             <div className="card">
-                <p>{isOri}</p>
-
                 <header className="card-header">
-                    <p>{author}</p>
+                    <p className="card-header-title">{author}</p>
                 </header>
 
-                <p>{text}</p>
-                <p>{"likes: " + likes}</p>
-                <p>{"retweets: " + retweets}</p>
+                <div className="card-content">
+                    <div className="content"> 
+                        <p>{text}</p>
 
-                <div>
-                    <p>{oriAuthor}</p>
-                    <p>{oriTweet}</p>
+                        <p className="isOri" style={{all: isRetweet()}}>{retweetHeader()}</p>
+                        <div className="retweet" style={{all: isRetweet()}}>
+                            <p>{oriAuthor}</p>
+                            <p>{oriTweet}</p>
+                        </div>
+
+                        <div className="counters">
+                            <p className="likesRet">{"likes: " + likes}</p>
+                            <p className="likesRet">{"retweets: " + retweets}</p>
+                        </div>
+                    </div>
                 </div>
 
-                <button onClick={e => {e.preventDefault(); setEditDiv(true); props.setDarkCover(true); }} >Edit</button>
-                <button onClick={e => {e.preventDefault(); setReplyDiv(true); props.setDarkCover(true); }} >Reply</button>
-                <button onClick={e => {e.preventDefault(); setRetweetDiv(true); props.setDarkCover(true); }} >Retweet</button>
-                <button onClick={e => {e.preventDefault(); setRepliesDiv(true); props.setDarkCover(true); }} >See Replies {" (" + replies + ")"}</button>
-                <button onClick={e => {e.preventDefault(); deleteTweet()}} >Delete</button>
-                
-                { editDiv && (<EditForm tweetID = {props.tweetID} setEditDiv = {setEditDiv} setText = {setText} originalText = {text} setDarkCover = {props.setDarkCover} />) }
-                { replyDiv && (<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} setReplies = {setReplies} replies = {replies} setDarkCover = {props.setDarkCover} />) }
-                { retweetDiv && (<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} setDarkCover = {props.setDarkCover} />) }
-                { repliesDiv && (<RepliesView tweetID = {props.tweetID} setRepliesDiv = {setRepliesDiv} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} setDarkCover = {props.setDarkCover} />) }
+                <footer className="card-footer">
+                    <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); setEditDiv(true); props.setDarkCover(true); }} >Edit</button>
+                    <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); setReplyDiv(true); props.setDarkCover(true); }} >Reply</button>
+                    <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); setRetweetDiv(true); props.setDarkCover(true); }} >Retweet</button>
+                    <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); setRepliesDiv(true); props.setDarkCover(true); }} >See Replies {" (" + replies + ")"}</button>
+                    <button className="button is-info is-outlined card-footer-item" onClick={e => {e.preventDefault(); deleteTweet()}} >Delete</button>
+                </footer> 
             </div>
+
+            { editDiv && (<EditForm tweetID = {props.tweetID} setEditDiv = {setEditDiv} setText = {setText} originalText = {text} setDarkCover = {props.setDarkCover} />) }
+            { replyDiv && (<ReplyForm tweetID = {props.tweetID} setReplyDiv = {setReplyDiv} setReplies = {setReplies} replies = {replies} setDarkCover = {props.setDarkCover} />) }
+            { retweetDiv && (<RetweetForm tweetID = {props.tweetID} setRetweetDiv = {setRetweetDiv} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} setDarkCover = {props.setDarkCover} />) }
+            { repliesDiv && (<RepliesView tweetID = {props.tweetID} setRepliesDiv = {setRepliesDiv} setShowTweets = {props.setShowTweets} setShowMyTweets = {props.setShowMyTweets} setDarkCover = {props.setDarkCover} />) }
 
         </div>
     );

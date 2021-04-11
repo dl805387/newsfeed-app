@@ -52,16 +52,19 @@ function App() {
     // testing to see if view changes
 
     return (
-        <div className="App">
+        <div>
 
-            <div>
-                <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
-                <button onClick={e => {e.preventDefault(); postTweet(); setText("")}}>Tweet</button>
+            <div className="popup">
+                <textarea className="textarea has-fixed-size" onChange={e => setText(e.target.value)} value={text} placeholder="What's happening?"> </textarea>
+                <button className="button is-info is-outlined postbtn" onClick={e => {e.preventDefault(); postTweet(); setText("")}}>Tweet</button>
             </div>
 
-            <button onClick={e => {e.preventDefault(); setShowPost(true); setDarkCover(true); }}>Tweet</button>
-            <button onClick={e => {e.preventDefault(); setShowMyTweets(false); setShowTweets(true); }}>All tweets</button>
-            <button onClick={e => {e.preventDefault(); setShowTweets(false); setShowMyTweets(true) }}>show my tweets</button>
+            <button className="button is-info tweetBtn" onClick={e => {e.preventDefault(); setShowPost(true); setDarkCover(true); }}>Tweet</button>
+            
+            <div className="btnGroup">
+                <button className="viewBtn leftB" onClick={e => {e.preventDefault(); setShowMyTweets(false); setShowTweets(true); }}>All Tweets</button>
+                <button className="viewBtn rightB" onClick={e => {e.preventDefault(); setShowTweets(false); setShowMyTweets(true) }}>Show My Tweets</button>
+            </div>
 
             { showPost && (<PostForm setShowPost = {setShowPost} setShowTweets = {setShowTweets} setShowMyTweets = {setShowMyTweets} showTweets = {showTweets} setDarkCover = {setDarkCover} />) }
             { showTweets && (<TweetsView setShowTweets = {setShowTweets} setDarkCover = {setDarkCover} />) }

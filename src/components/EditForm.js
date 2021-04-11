@@ -30,10 +30,10 @@ function EditForm(props) {
 
     return (
         <div className="overlay">
-            <div>
-                <textarea onChange={e => setText(e.target.value)} value={text}> </textarea>
-                <button onClick={e => {e.preventDefault(); editTweet();}}>Update</button>
-                <button onClick={e => {e.preventDefault(); props.setEditDiv(false); props.setDarkCover(false); }}>Cancel</button>
+            <div className="popup">
+                <textarea className="textarea has-fixed-size" onChange={e => setText(e.target.value)} value={text}> </textarea>
+                <button className="button is-success is-outlined" onClick={e => {e.preventDefault(); editTweet();}}>Update</button>
+                <button className="button is-danger is-outlined" onClick={e => {e.preventDefault(); props.setEditDiv(false); props.setDarkCover(false); }}>Cancel</button>
             </div>
         </div>
     );

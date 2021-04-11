@@ -45,7 +45,7 @@ function RepliesView(props) {
                     }
                 })}
 
-                <button onClick={e => {e.preventDefault(); props.setRepliesDiv(false); props.setDarkCover(false); }}>Close</button>
+                <button className="button is-danger is-outlined" onClick={e => {e.preventDefault(); props.setRepliesDiv(false); props.setDarkCover(false); }}>Close</button>
             </div>
         </div>
     );

@@ -82,15 +82,23 @@ function Tweet(props) {
         }
     }
 
+    // If tweet is a retweet, then this will return "<author name> retweeted"
+    const retweetHeader = () => {
+        if (isOri === "") {
+            return isOri;
+        } else {
+            return author + " " + isOri + "ed";
+        }
+    }
+
     useEffect(() => {
         retrieveTweet();
     }, []);
 
     return (
-        <div className="tweet">
+        <div>
 
             <div className="card">
-
                 <header className="card-header">
                     <p className="card-header-title">{author}</p>
                 </header>
@@ -99,15 +107,15 @@ function Tweet(props) {
                     <div className="content">
                         <p>{text}</p>
 
-                        <p className="isOri" style={{all: isRetweet()}}>{author + " " + isOri + "ed"}</p>
+                        <p className="isOri" style={{all: isRetweet()}}>{retweetHeader()}</p>
                         <div className="retweet" style={{all: isRetweet()}}>
                             <p>{oriAuthor}</p>
                             <p>{oriTweet}</p>
                         </div>
 
                         <div className="counters">
-                            <p className="likes">{"likes: " + likes}</p>
-                            <p>{"retweets: " + retweets}</p>
+                            <p className="likesRet">{"likes: " + likes}</p>
+                            <p className="likesRet">{"retweets: " + retweets}</p>
                         </div>
                     </div>
                 </div>
