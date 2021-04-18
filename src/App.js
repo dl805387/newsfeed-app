@@ -46,11 +46,6 @@ function App() {
         setShowTweets(true);
     }, []);
 
-    // to do
-    // do thorough testing before submitting
-    // such as testing on replies view
-    // testing to see if view changes
-
     return (
         <div>
 

@@ -30,11 +30,6 @@ function ReplyForm(props) {
         return result;
     }
 
-    // to do
-    // !important
-    // if text field is empty, then change color of the button, and maybe make it unclickable
-    // do this for the edit form as well
-
     return (
         <div className="overlay">
             <div className="popup">

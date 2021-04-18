@@ -1,5 +1,5 @@
 # newsfeed-app
-twitter clone
+This is a twitter clone. It interacts with a API which contains all the tweets. User can add, delete, and update tweets.
 
 # Getting Started with Create React App
 
